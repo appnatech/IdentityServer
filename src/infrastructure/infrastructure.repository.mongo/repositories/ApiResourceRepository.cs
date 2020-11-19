@@ -12,7 +12,6 @@ namespace infrastructure.repository.mongo
 {
     public class ApiResourceMongoRepository : IApiResourceRepository
     {
-
         private const string ApiResourceCollectionName = "ApiResource";
         private readonly IMongoCollection<ApiResource> _apiResourses;
 

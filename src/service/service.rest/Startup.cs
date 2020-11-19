@@ -3,6 +3,7 @@ using application.core.repositories;
 using application.core.services;
 using application.core.stores;
 using infrastructure.repository.mongo;
+using infrastructure.repository.mongo.config;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +46,9 @@ namespace services
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppnaTech Identity Server API", Version = "v1" }));
+
+
+            services.Configure<MongoDataBaseConfigurations>(Configuration.GetSection("MongoDataBaseConfigurations"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

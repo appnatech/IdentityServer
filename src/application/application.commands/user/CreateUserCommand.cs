@@ -11,18 +11,24 @@ using application.commands;
 
 namespace application.Commands.user
 {
-    public class CreateUserCommand:BaseCommand<User>
+    public class CreateUserCommand:BaseCommand<string>
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string Username { get;}
+        public string Password { get;}
 
         //claims
         public string Name { get; set; }
-        public string GivenName { get; set; }
-        public string FamilyName { get; set; }
+
+
+        public CreateUserCommand(string userName,string password)
+        {
+            Username=userName;
+            Password=password;
+            Name=userName;
+        }
     }
 
-    public class CreateUserCommandHandler:IRequestHandler<CreateUserCommand,User>
+    public class CreateUserCommandHandler:IRequestHandler<CreateUserCommand,string>
     {
         private readonly IUserRepository _userRepository;
 
@@ -31,21 +37,24 @@ namespace application.Commands.user
             _userRepository = userRepository;
         }
 
-        public Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-           return _userRepository.AddAsync(new User()
-           {
-               SubjectId=Guid.NewGuid().ToString(),
+            var subjectId=Guid.NewGuid().ToString();
+
+            await _userRepository.AddAsync(new User()
+            {
+               SubjectId=subjectId,
                IsActive=true,
                Username=request.Username,
                Password=request.Password,
                Claims=new List<Claim>()
                {
                     new Claim(JwtClaimTypes.Name, request.Name),
-                    new Claim(JwtClaimTypes.GivenName, request.GivenName),
-                    new Claim(JwtClaimTypes.FamilyName, request.FamilyName),
                }
-           });
+            })
+            .ConfigureAwait(false);
+
+           return subjectId;
         }
     }
 }
