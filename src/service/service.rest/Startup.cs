@@ -1,3 +1,4 @@
+using System;
 using application.commands;
 using application.core.repositories;
 using application.core.services;
@@ -34,11 +35,18 @@ namespace services
                 .AddCorsPolicyService<CorsPolicyService>()
                 .AddDeveloperSigningCredential(persistKey: false);
 
-            services.AddScoped<IUserRepository, UserMongoRepository>();
-            services.AddScoped<IClientRepository, ClientMongoRepository>();
-            services.AddScoped<IApiResourceRepository, ApiResourceMongoRepository>();
-            services.AddScoped<IApiScopeRepository, ApiScopeMongoRepository>();
-            services.AddScoped<IIdentityResourceRepository, IdentityResourceMongoRepository>();
+            if (string.Equals(Configuration["IdentityServerConfigurations:DataProvider"], "Mongo", StringComparison.OrdinalIgnoreCase))
+            {
+                services.AddScoped<IUserRepository, UserMongoRepository>();
+                services.AddScoped<IClientRepository, ClientMongoRepository>();
+                services.AddScoped<IApiResourceRepository, ApiResourceMongoRepository>();
+                services.AddScoped<IApiScopeRepository, ApiScopeMongoRepository>();
+                services.AddScoped<IIdentityResourceRepository, IdentityResourceMongoRepository>();
+            }
+            else
+            {
+                throw new Exception("declared dataType in config not supported");
+            }
 
             services.AddControllers();
             services.AddMediatR(typeof(BaseCommand<>));
@@ -46,7 +54,6 @@ namespace services
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppnaTech Identity Server API", Version = "v1" }));
-
 
             services.Configure<MongoDataBaseConfigurations>(Configuration.GetSection("MongoDataBaseConfigurations"));
         }
@@ -56,7 +63,7 @@ namespace services
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseHttpsRedirection ();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
 
@@ -64,8 +71,8 @@ namespace services
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
             app
-            .UseSwagger()
-            .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
+                .UseSwagger()
+                .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
         }
     }
 }
