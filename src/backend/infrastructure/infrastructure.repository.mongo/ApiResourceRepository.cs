@@ -37,7 +37,7 @@ namespace infrastructure.repository.mongo
 
         public  async Task<IEnumerable<ApiResource>> GetByScopeNameAsync(IEnumerable<string> scopeNames)
         {
-            var apiResources=await _apiResourses.FindAsync(apiResource=>apiResource.Scopes.Any(scope=>scopeNames.Contains(scope)));
+            var apiResources=await _apiResourses.FindAsync(apiResource=>apiResource.Scopes.Any(scopeNames.Contains));
             return apiResources.ToList();
         }
     }

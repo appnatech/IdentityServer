@@ -11,7 +11,7 @@ namespace infrastructure.repository.mongo
             throw new System.NotImplementedException();
         }
 
-        public Task<User> GetBySubjectyIdAsync(string subjectId)
+        public Task<User> GetBySubjectIdAsync(string subjectId)
         {
             throw new System.NotImplementedException();
         }

@@ -6,7 +6,7 @@ namespace application.core.repositories
 {
     public interface IApiScopeRepository
     {
-         Task<IEnumerable<ApiScope>> GetAllAsync();
-         Task<IEnumerable<ApiScope>> GetByNameAsync(IEnumerable<string> scopeNames);
+        Task<IEnumerable<ApiScope>> GetAllAsync();
+        Task<IEnumerable<ApiScope>> GetByNameAsync(IEnumerable<string> scopeNames);
     }
 }

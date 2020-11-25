@@ -4,20 +4,18 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace application.core.stores
 {
-    public class SigningCredentialStore : ISigningCredentialStore 
+    public class SigningCredentialStore : ISigningCredentialStore
     {
-
         private readonly SigningCredentials _credentials;
-        
 
-        public SigningCredentialStore (SigningCredentials credentials) 
+        public SigningCredentialStore(SigningCredentials credentials)
         {
             _credentials = credentials;
         }
 
-        public Task<SigningCredentials> GetSigningCredentialsAsync () 
+        public Task<SigningCredentials> GetSigningCredentialsAsync()
         {
-            return Task.FromResult (_credentials);
+            return Task.FromResult(_credentials);
         }
     }
 }

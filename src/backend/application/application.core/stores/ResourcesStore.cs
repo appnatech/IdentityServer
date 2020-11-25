@@ -13,7 +13,7 @@ namespace application.core.stores
         private readonly IApiScopeRepository _apiScopeRepository;
         private readonly IIdentityResourceRepository _identityResourceRepository;
 
-        public ResourcesStore(IApiScopeRepository apiScopeRepository,IApiResourceRepository apiResourceRepository, IIdentityResourceRepository identityResourceRepository)
+        public ResourcesStore(IApiScopeRepository apiScopeRepository, IApiResourceRepository apiResourceRepository, IIdentityResourceRepository identityResourceRepository)
         {
             _apiScopeRepository = apiScopeRepository;
             _apiResourceRepository = apiResourceRepository;
@@ -22,7 +22,7 @@ namespace application.core.stores
 
         public Task<IEnumerable<ApiResource>> FindApiResourcesByNameAsync(IEnumerable<string> apiResourceNames)
         {
-            if (apiResourceNames == null) 
+            if (apiResourceNames == null)
                 throw new ArgumentNullException(nameof(apiResourceNames));
 
             return _apiResourceRepository.GetByNamesAsync(apiResourceNames);
@@ -30,15 +30,15 @@ namespace application.core.stores
 
         public Task<IEnumerable<ApiResource>> FindApiResourcesByScopeNameAsync(IEnumerable<string> scopeNames)
         {
-             if (scopeNames == null) 
+            if (scopeNames == null)
                 throw new ArgumentNullException(nameof(scopeNames));
 
-             return _apiResourceRepository.GetByScopeNameAsync(scopeNames);
+            return _apiResourceRepository.GetByScopeNameAsync(scopeNames);
         }
 
         public Task<IEnumerable<ApiScope>> FindApiScopesByNameAsync(IEnumerable<string> scopeNames)
         {
-             if (scopeNames == null) 
+            if (scopeNames == null)
                 throw new ArgumentNullException(nameof(scopeNames));
 
             return _apiScopeRepository.GetByNameAsync(scopeNames);
@@ -46,7 +46,7 @@ namespace application.core.stores
 
         public Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeNameAsync(IEnumerable<string> scopeNames)
         {
-             if (scopeNames == null) 
+            if (scopeNames == null)
                 throw new ArgumentNullException(nameof(scopeNames));
 
             return _identityResourceRepository.GetByScopeNameAsync(scopeNames);
@@ -54,18 +54,18 @@ namespace application.core.stores
 
         public Task<Resources> GetAllResourcesAsync()
         {
-            var apiResourseResult=_apiResourceRepository.GetAllAsync();
-            var apiScopeResult=_apiScopeRepository.GetAllAsync();
-            var identityResourceResult=_identityResourceRepository.GetAllAsync();
+            Task<IEnumerable<ApiResource>> apiResourceResult = _apiResourceRepository.GetAllAsync();
+            Task<IEnumerable<ApiScope>> apiScopeResult = _apiScopeRepository.GetAllAsync();
+            Task<IEnumerable<IdentityResource>> identityResourceResult = _identityResourceRepository.GetAllAsync();
 
             Task.WaitAll(new Task[]
             {
-                apiResourseResult,
+                apiResourceResult,
                 apiScopeResult,
                 identityResourceResult
             });
 
-             var result = new Resources(identityResourceResult.Result, apiResourseResult.Result, apiScopeResult.Result);
+            var result = new Resources(identityResourceResult.Result, apiResourceResult.Result, apiScopeResult.Result);
 
             return Task.FromResult(result);
         }

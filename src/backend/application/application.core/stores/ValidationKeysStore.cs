@@ -14,6 +14,7 @@ namespace application.core.stores
         {
             _keys = keys ?? throw new ArgumentNullException(nameof(keys));
         }
+
         public Task<IEnumerable<SecurityKeyInfo>> GetValidationKeysAsync()
         {
             return Task.FromResult(_keys);

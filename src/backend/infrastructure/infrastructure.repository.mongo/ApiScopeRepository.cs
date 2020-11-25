@@ -19,18 +19,18 @@ namespace infrastructure.repository.mongo
             var client = new MongoClient(config.Value.ConnectionString);
             var database = client.GetDatabase(config.Value.DatabaseName);
 
-            _apiScopes = database.GetCollection<ApiScope>(ApiScopeCollectionName);   
+            _apiScopes = database.GetCollection<ApiScope>(ApiScopeCollectionName);
         }
 
         public async Task<IEnumerable<ApiScope>> GetAllAsync()
         {
-             var apiScopes= await _apiScopes.FindAsync(apiResource=>true);
+            IAsyncCursor<ApiScope> apiScopes = await _apiScopes.FindAsync(apiResource => true);
             return apiScopes.ToList();
         }
 
         public async Task<IEnumerable<ApiScope>> GetByNameAsync(IEnumerable<string> scopeNames)
         {
-             var apiScopes= await _apiScopes.FindAsync(apiScope=>scopeNames.Contains(apiScope.Name));
+            IAsyncCursor<ApiScope> apiScopes = await _apiScopes.FindAsync(apiScope => scopeNames.Contains(apiScope.Name));
             return apiScopes.ToList();
         }
     }

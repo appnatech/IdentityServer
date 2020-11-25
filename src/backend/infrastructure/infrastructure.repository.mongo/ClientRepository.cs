@@ -4,7 +4,7 @@ using IdentityServer4.Models;
 
 namespace infrastructure.repository.mongo
 {
-    public class ClientMongoRepository:IClientRepository
+    public class ClientMongoRepository : IClientRepository
     {
         public Task<Client> AddAsync(Client user)
         {

@@ -2,7 +2,7 @@ using MediatR;
 
 namespace application.commands
 {
-    public class BaseCommand<T>:IRequest<T>
+    public class BaseCommand<T> : IRequest<T>
     {
     }
 }

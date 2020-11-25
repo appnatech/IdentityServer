@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using application.core.repositories;
 using IdentityServer4.Models;
@@ -12,7 +11,6 @@ namespace infrastructure.repository.mongo
 {
     public class IdentityResourceMongoRepository : IIdentityResourceRepository
     {
-
         private const string IdentityResourceCollectionName = "IdentityResource";
         private readonly IMongoCollection<IdentityResource> _identityResources;
 
@@ -24,10 +22,9 @@ namespace infrastructure.repository.mongo
             _identityResources = database.GetCollection<IdentityResource>(IdentityResourceCollectionName);
         }
 
-
         public async Task<IEnumerable<IdentityResource>> GetAllAsync()
         {
-            var identityResources= await _identityResources.FindAsync(identityResource=>true);
+            IAsyncCursor<IdentityResource> identityResources= await _identityResources.FindAsync(identityResource=>true);
             return identityResources.ToList();
         }
 

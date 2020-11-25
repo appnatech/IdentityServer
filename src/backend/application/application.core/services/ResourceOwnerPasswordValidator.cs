@@ -21,9 +21,9 @@ namespace application.core.services
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
             var user = await _userRepository.GetByUsernameAndPasswordAsync(context.UserName, context.Password).ConfigureAwait(false);
-            if (user!=null)
+            if (user != null)
             {
-                if( user.SubjectId ==null)
+                if (user.SubjectId == null)
                     throw new ArgumentException("Subject Id not set", nameof(user.SubjectId));
 
                 context.Result = new GrantValidationResult(user.SubjectId, OidcConstants.AuthenticationMethods.Password, _clock.UtcNow.UtcDateTime, user.Claims);

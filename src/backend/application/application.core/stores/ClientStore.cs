@@ -18,6 +18,4 @@ namespace application.core.stores
             return _clientRepository.GetAsync(clientId);
         }
     }
-
-    
 }

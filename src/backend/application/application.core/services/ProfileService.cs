@@ -20,7 +20,7 @@ namespace application.core.services
         {
             if (context.RequestedClaimTypes.Any())
             {
-                var user =await _userRepository.GetBySubjectyIdAsync(context.Subject.GetSubjectId());
+                var user = await _userRepository.GetBySubjectIdAsync(context.Subject.GetSubjectId());
                 if (user != null)
                 {
                     context.AddRequestedClaims(user.Claims);
@@ -30,7 +30,7 @@ namespace application.core.services
 
         public async Task IsActiveAsync(IsActiveContext context)
         {
-            var user = await _userRepository.GetBySubjectyIdAsync(context.Subject.GetSubjectId());
+            var user = await _userRepository.GetBySubjectIdAsync(context.Subject.GetSubjectId());
             context.IsActive = user?.IsActive == true;
         }
     }

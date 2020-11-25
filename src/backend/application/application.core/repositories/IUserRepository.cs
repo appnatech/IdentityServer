@@ -5,10 +5,10 @@ namespace application.core.repositories
 {
     public interface IUserRepository
     {
-         Task<User> GetBySubjectyIdAsync(string subjectId);
-         Task<User> GetByUsernameAsync(string userName);
-         Task<User> GetByUsernameAndPasswordAsync(string username, string password);
+        Task<User> GetBySubjectIdAsync(string subjectId);
+        Task<User> GetByUsernameAsync(string userName);
+        Task<User> GetByUsernameAndPasswordAsync(string username, string password);
 
-         Task<User> AddAsync(User user);
+        Task<User> AddAsync(User user);
     }
 }

@@ -8,21 +8,22 @@ namespace service.rest.v1.controller
 {
     [Route("api/users")]
     [ApiController]
-    public class UserController:ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
+
         public UserController(IMediator mediator)
         {
-            _mediator=mediator;
+            _mediator = mediator;
         }
 
         [HttpPost]
         [ActionName(nameof(CreateUserAsync))]
         public async Task<ActionResult> CreateUserAsync([FromBody]CreateUserRequest request)
         {
-            string userId = await _mediator.Send(new CreateUserCommand(request.UserName,request.Password)
+            string userId = await _mediator.Send(new CreateUserCommand(request.UserName, request.Password)
             {
-                Name=request.Name
+                Name = request.Name
             })
             .ConfigureAwait(false);
 

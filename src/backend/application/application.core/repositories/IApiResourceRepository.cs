@@ -6,8 +6,8 @@ namespace application.core.repositories
 {
     public interface IApiResourceRepository
     {
-         Task<IEnumerable<ApiResource>> GetAllAsync();
-         Task<IEnumerable<ApiResource>> GetByNamesAsync(IEnumerable<string> apiResourceNames);
-         Task<IEnumerable<ApiResource>> GetByScopeNameAsync(IEnumerable<string> scopeNames);
+        Task<IEnumerable<ApiResource>> GetAllAsync();
+        Task<IEnumerable<ApiResource>> GetByNamesAsync(IEnumerable<string> apiResourceNames);
+        Task<IEnumerable<ApiResource>> GetByScopeNameAsync(IEnumerable<string> scopeNames);
     }
 }
