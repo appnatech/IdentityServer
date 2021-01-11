@@ -1,5 +1,6 @@
 using System;
 using application.commands;
+using application.queries;
 using domain.core.repositories;
 using domain.core.services;
 using domain.core.stores;
@@ -49,7 +50,7 @@ namespace service.rest
             }
 
             services.AddControllers();
-            services.AddMediatR(typeof(BaseCommand<>));
+            services.AddMediatR(typeof(BaseCommand<>), typeof(BaseQuery<>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LogBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
