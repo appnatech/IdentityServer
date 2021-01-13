@@ -25,19 +25,19 @@ namespace infrastructure.repository.mongo
 
         public async Task<IEnumerable<ApiResource>> GetAllAsync()
         {
-            var apiResources= await _apiResourses.FindAsync(apiResource=>true);
+            var apiResources = await _apiResourses.FindAsync(apiResource => true);
             return apiResources.ToList();
         }
 
         public async Task<IEnumerable<ApiResource>> GetByNamesAsync(IEnumerable<string> apiResourceNames)
         {
-              var apiResources= await _apiResourses.FindAsync(apiResource=>apiResourceNames.Contains(apiResource.Name));
-              return apiResources.ToList();
+            var apiResources = await _apiResourses.FindAsync(apiResource => apiResourceNames.Contains(apiResource.Name));
+            return apiResources.ToList();
         }
 
-        public  async Task<IEnumerable<ApiResource>> GetByScopeNameAsync(IEnumerable<string> scopeNames)
+        public async Task<IEnumerable<ApiResource>> GetByScopeNameAsync(IEnumerable<string> scopeNames)
         {
-            var apiResources=await _apiResourses.FindAsync(apiResource=>apiResource.Scopes.Any(scopeNames.Contains));
+            var apiResources = await _apiResourses.FindAsync(apiResource => apiResource.Scopes.Any(scopeNames.Contains));
             return apiResources.ToList();
         }
     }

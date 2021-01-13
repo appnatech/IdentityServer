@@ -24,7 +24,7 @@ namespace infrastructure.repository.mongo
 
         public async Task<IEnumerable<IdentityResource>> GetAllAsync()
         {
-            IAsyncCursor<IdentityResource> identityResources= await _identityResources.FindAsync(identityResource=>true);
+            IAsyncCursor<IdentityResource> identityResources = await _identityResources.FindAsync(identityResource => true);
             return identityResources.ToList();
         }
 

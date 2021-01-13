@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/backend/service.rest/bin/Debug/netcoreapp3.1/service.rest.dll",
+            "program": "${workspaceFolder}/src/backend/service.rest/bin/Debug/netcoreapp5/service.rest.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/backend/service.rest",
             "stopAtEntry": false,
