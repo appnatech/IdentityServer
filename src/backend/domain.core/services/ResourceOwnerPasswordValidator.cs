@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using domain.core.repositories;
+using Domain.Core.Repositories;
 using IdentityModel;
 using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Authentication;
 
-namespace domain.core.services
+namespace Domain.Core.Services
 {
     public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {

@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using domain.core.models;
+using Domain.Core.Models;
 
-namespace domain.core.repositories
+namespace Domain.Core.Repositories
 {
     public interface IUserRepository
     {

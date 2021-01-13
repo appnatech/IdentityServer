@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using IdentityServer4.Services;
 
-namespace domain.core.services
+namespace Domain.Core.Services
 {
     public class CorsPolicyService : ICorsPolicyService
     {

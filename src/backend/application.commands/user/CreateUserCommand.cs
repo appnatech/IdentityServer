@@ -5,11 +5,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using IdentityModel;
-using application.commands;
-using domain.core.models;
-using domain.core.repositories;
+using Application.Commands;
+using Domain.Core.Models;
+using Domain.Core.Repositories;
 
-namespace application.Commands.user
+namespace Application.Commands.User
 {
     public class CreateUserCommand : BaseCommand<string>
     {

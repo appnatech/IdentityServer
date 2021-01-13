@@ -6,9 +6,9 @@
    </ItemGroup>
 
    <ItemGroup>
-     <ProjectReference Include="..\application.commands\application.commands.csproj" />
-     <ProjectReference Include="..\application.queries\application.queries.csproj" />
-     <ProjectReference Include="..\infrastructure.repository.mongo\infrastructure.repository.mongo.csproj" />
+     <ProjectReference Include="..\Application.Commands\Application.Commands.csproj" />
+     <ProjectReference Include="..\Application.Queries\Application.Queries.csproj" />
+     <ProjectReference Include="..\Infrastructure.Repository.Mongo\Infrastructure.Repository.Mongo.csproj" />
    </ItemGroup>
 
   <PropertyGroup>

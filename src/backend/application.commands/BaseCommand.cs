@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace application.commands
+namespace Application.Commands
 {
     public class BaseCommand<T> : IRequest<T>
     {

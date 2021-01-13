@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using domain.core.models;
-using domain.core.repositories;
-using infrastructure.repository.mongo.config;
+using Domain.Core.Models;
+using Domain.Core.Repositories;
+using Infrastructure.Repository.Mongo.Config;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace infrastructure.repository.mongo
+namespace Infrastructure.Repository.Mongo
 {
     public class UserMongoRepository : IUserRepository
     {

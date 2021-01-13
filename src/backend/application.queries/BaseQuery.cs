@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace application.queries
+namespace Application.Queries
 {
     public class BaseQuery<T> : IRequest<T>
     {

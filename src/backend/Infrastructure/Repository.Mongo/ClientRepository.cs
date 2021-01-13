@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
-using domain.core.repositories;
+using Domain.Core.Repositories;
 using IdentityServer4.Models;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
-using infrastructure.repository.mongo.config;
+using Infrastructure.Repository.Mongo.Config;
 using System;
 
-namespace infrastructure.repository.mongo
+namespace Infrastructure.Repository.Mongo
 {
     public class ClientMongoRepository : IClientRepository
     {

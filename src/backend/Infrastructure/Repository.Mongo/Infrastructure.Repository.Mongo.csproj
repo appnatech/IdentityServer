@@ -9,10 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="repositories\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\domain.core\domain.core.csproj" />
+    <ProjectReference Include="..\..\Domain.Core\Domain.Core.csproj" />
   </ItemGroup>
 </Project>

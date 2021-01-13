@@ -1,11 +1,11 @@
 using System.Linq;
 using System.Threading.Tasks;
-using domain.core.repositories;
+using Domain.Core.Repositories;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 
-namespace domain.core.services
+namespace Domain.Core.Services
 {
     public class ProfileService : IProfileService
     {

@@ -1,4 +1,4 @@
-namespace infrastructure.repository.mongo.config
+namespace Infrastructure.Repository.Mongo.Config
 {
     public class MongoDataBaseConfigurations
     {

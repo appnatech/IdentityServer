@@ -1,4 +1,4 @@
-namespace service.rest.config
+namespace Service.Rest.Config
 {
     public class IdentityServerConfigurations
     {

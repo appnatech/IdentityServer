@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 
-namespace domain.core.stores
+namespace Domain.Core.Stores
 {
     public class DeviceFlowStore : IDeviceFlowStore
     {

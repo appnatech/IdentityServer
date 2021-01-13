@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using IdentityModel;
 
-namespace domain.core.models
+namespace Domain.Core.Models
 {
     public class User
     {

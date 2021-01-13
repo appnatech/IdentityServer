@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using domain.core.repositories;
+using Domain.Core.Repositories;
 using IdentityServer4.Models;
-using infrastructure.repository.mongo.config;
+using Infrastructure.Repository.Mongo.Config;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace infrastructure.repository.mongo
+namespace Infrastructure.Repository.Mongo
 {
     public class ApiScopeMongoRepository : IApiScopeRepository
     {

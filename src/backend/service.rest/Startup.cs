@@ -1,11 +1,11 @@
 using System;
-using application.commands;
-using application.queries;
-using domain.core.repositories;
-using domain.core.services;
-using domain.core.stores;
-using infrastructure.repository.mongo;
-using infrastructure.repository.mongo.config;
+using Application.Commands;
+using Application.Queries;
+using Domain.Core.Repositories;
+using Domain.Core.Services;
+using Domain.Core.Stores;
+using Infrastructure.Repository.Mongo;
+using Infrastructure.Repository.Mongo.Config;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace service.rest
+namespace Service.Rest
 {
     public class Startup
     {

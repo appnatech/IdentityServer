@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using application.Commands.user;
+using Application.Commands.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using service.rest.v1.requests;
+using Service.Rest.v1.Requests;
 
-namespace service.rest.v1.controller
+namespace Service.Rest.v1.Controller
 {
     [Route("api/users")]
     [ApiController]

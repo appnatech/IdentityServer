@@ -1,4 +1,4 @@
-namespace service.rest.v1.requests
+namespace Service.Rest.v1.Requests
 {
     public class CreateUserRequest
     {

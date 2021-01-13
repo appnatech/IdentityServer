@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
 
-namespace domain.core.repositories
+namespace Domain.Core.Repositories
 {
     public interface IApiScopeRepository
     {

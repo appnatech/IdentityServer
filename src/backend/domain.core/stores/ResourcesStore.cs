@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using domain.core.repositories;
+using Domain.Core.Repositories;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 
-namespace domain.core.stores
+namespace Domain.Core.Stores
 {
     public class ResourcesStore : IResourceStore
     {

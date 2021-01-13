@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using IdentityServer4.Stores;
 using Microsoft.IdentityModel.Tokens;
 
-namespace domain.core.stores
+namespace Domain.Core.Stores
 {
     public class SigningCredentialStore : ISigningCredentialStore
     {
