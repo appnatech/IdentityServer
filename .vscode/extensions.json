@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "formulahendry.dotnet",
+        "adrianwilczynski.user-secrets",
+        "ms-dotnettools.csharp"
+    ]
+}
