@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/backend/service.rest/bin/Debug/netcoreapp5/service.rest.dll",
+            "program": "${workspaceFolder}/src/backend/Service.Rest/bin/Debug/netcoreapp5/Service.Rest.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/backend/service.rest",
+            "cwd": "${workspaceFolder}/src/backend/Service.Rest",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
