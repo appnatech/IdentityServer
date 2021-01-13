@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using IdentityModel;
 using Application.Commands;
-using Domain.Core.Models;
+using Domain.Core;
 using Domain.Core.Repositories;
 
 namespace Application.Commands.User
@@ -40,7 +40,7 @@ namespace Application.Commands.User
         {
             var subjectId = Guid.NewGuid().ToString();
 
-            await _userRepository.AddAsync(new User()
+            await _userRepository.AddAsync(new Domain.Core.Models.User()
             {
                 SubjectId = subjectId,
                 IsActive = true,
