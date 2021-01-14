@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,6 @@ using IdentityServer4.Models;
 using Infrastructure.Repository.Mongo.Config;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-
 namespace Infrastructure.Repository.Mongo
 {
     public class IdentityResourceMongoRepository : IIdentityResourceRepository
@@ -36,5 +36,4 @@ namespace Infrastructure.Repository.Mongo
             return identityResources.ToList();
         }
     }
-}
 }
