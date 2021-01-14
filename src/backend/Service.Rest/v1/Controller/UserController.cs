@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Commands.User;
+using Application.Queries.User;
+using Domain.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Service.Rest.v1.Requests;
@@ -28,6 +31,16 @@ namespace Service.Rest.v1.Controller
             .ConfigureAwait(false);
 
             return Ok(userId);
+        }
+
+        [HttpGet]
+        [ActionName(nameof(GetUsersAsync))]
+        public async Task<ActionResult> GetUsersAsync()
+        {
+            IEnumerable<User> users = await _mediator.Send(new GetUsersQuery())
+            .ConfigureAwait(false);
+
+            return Ok(users);
         }
     }
 }
