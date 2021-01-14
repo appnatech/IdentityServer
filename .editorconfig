@@ -86,9 +86,10 @@ max_line_length = 140
 
 
 
-
-dotnet_diagnostic.SA1633.severity = none # File Header
-dotnet_diagnostic.CS1591.severity = none # Missing XML comment for publicly visible type or member
+ # File Header
+dotnet_diagnostic.SA1633.severity = none
+ # Missing XML comment for publicly visible type or member
+dotnet_diagnostic.CS1591.severity = none
 dotnet_diagnostic.CA1001.severity = warning
 dotnet_diagnostic.CA1009.severity = warning
 dotnet_diagnostic.CA1016.severity = warning
