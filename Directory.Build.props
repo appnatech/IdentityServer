@@ -1,0 +1,33 @@
+<Project>
+  <PropertyGroup Label="Version">
+    <VersionPrefix>1.0</VersionPrefix>
+    <VersionSuffix>0-dev</VersionSuffix>
+    <Version>$(VersionPrefix).$(VersionSuffix)</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp5</TargetFramework>
+    <Product>Appna.Identity</Product>
+    <RepositoryUrl>https://github.com/appnatech/IdentityServer</RepositoryUrl>
+    <Authors>Appnatech</Authors>
+    <Copyright>Copyright © Appnatech 2020. All rights reserved.</Copyright>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  
+  <PropertyGroup>
+    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" />
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AsyncFixer" Version="1.3.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>
