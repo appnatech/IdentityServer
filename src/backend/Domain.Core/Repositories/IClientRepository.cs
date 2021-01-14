@@ -5,7 +5,7 @@ namespace Domain.Core.Repositories
 {
     public interface IClientRepository
     {
-        Task<Client> GetAsync(string id);
+        Task<Client> GetByClientIdAsync(string clientId);
         Task<Client> AddAsync(Client user);
     }
 }

@@ -4,13 +4,11 @@ using IdentityServer4.Models;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 using Infrastructure.Repository.Mongo.Config;
-using System;
 
 namespace Infrastructure.Repository.Mongo
 {
     public class ClientMongoRepository : IClientRepository
     {
-
         private const string ApiScopeCollectionName = "Client";
         private readonly IMongoCollection<Client> _clients;
 
@@ -27,10 +25,11 @@ namespace Infrastructure.Repository.Mongo
             await _clients.InsertOneAsync(client);
             return client;
         }
-
-        public Task<Client> GetAsync(string id)
+        public async Task<Client> GetByClientIdAsync(string clientId)
         {
-            throw new System.NotImplementedException();
+            var client = await _clients.FindAsync(c => c.ClientId == clientId);
+
+            return await client.SingleOrDefaultAsync();
         }
     }
 }
