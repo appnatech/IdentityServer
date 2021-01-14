@@ -15,7 +15,7 @@ namespace Domain.Core.Stores
 
         public Task<Client> FindClientByIdAsync(string clientId)
         {
-            return _clientRepository.GetAsync(clientId);
+            return _clientRepository.GetByClientIdAsync(clientId);
         }
     }
 }
