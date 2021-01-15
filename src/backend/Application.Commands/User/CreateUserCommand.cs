@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
-using MediatR;
-using IdentityModel;
-using Application.Commands;
-using Domain.Core;
 using Domain.Core.Repositories;
+using IdentityModel;
+using MediatR;
 
 namespace Application.Commands.User
 {
@@ -16,14 +14,13 @@ namespace Application.Commands.User
         public string Username { get; }
         public string Password { get; }
 
-        //claims
+        // claims
         public string Name { get; set; }
 
         public CreateUserCommand(string userName, string password)
         {
             Username = userName;
             Password = password;
-            Name = userName;
         }
     }
 

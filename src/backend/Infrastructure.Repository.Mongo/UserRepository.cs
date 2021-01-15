@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Domain.Core.Models;
 using Domain.Core.Repositories;
@@ -22,11 +20,15 @@ namespace Infrastructure.Repository.Mongo
             _users = database.GetCollection<User>(IdentityResourceCollectionName);
         }
 
-
         public async Task<User> AddAsync(User user)
         {
             await _users.InsertOneAsync(user);
             return user;
+        }
+
+        public Task UpdateAsync(string id, User user)
+        {
+            return _users.ReplaceOneAsync(u => u.SubjectId == id, user);
         }
 
         public async Task<User> GetBySubjectIdAsync(string subjectId)

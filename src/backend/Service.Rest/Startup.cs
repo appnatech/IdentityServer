@@ -1,4 +1,5 @@
 using System;
+using System.Security.Claims;
 using Application.Commands;
 using Application.Queries;
 using Domain.Core.Models;
@@ -88,6 +89,11 @@ namespace Service.Rest
         private static void ConfigureMongoDriverToIgnoreExtraElements()
         {
             BsonClassMap.RegisterClassMap<User>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIgnoreExtraElements(true);
+            });
+            BsonClassMap.RegisterClassMap<Claim>(cm =>
             {
                 cm.AutoMap();
                 cm.SetIgnoreExtraElements(true);
