@@ -22,7 +22,7 @@ namespace Service.Rest.v1.Controller
 
         [HttpPost]
         [ActionName(nameof(CreateUserAsync))]
-        public async Task<ActionResult> CreateUserAsync([FromBody]CreateUserRequest request)
+        public async Task<ActionResult> CreateUserAsync([FromBody] CreateUserRequest request)
         {
             string userId = await _mediator.Send(new CreateUserCommand(request.UserName, request.Password)
             {
@@ -31,6 +31,15 @@ namespace Service.Rest.v1.Controller
             .ConfigureAwait(false);
 
             return Ok(userId);
+        }
+
+        [HttpPut]
+        [ActionName(nameof(UpdateUserAsync))]
+        public async Task<ActionResult> UpdateUserAsync([FromBody] UpdateUserRequest request)
+        {
+            bool isSuccess = await _mediator.Send(new UpdateUserCommand(request.SubjectId, request.Name, request.Password));
+
+            return isSuccess ? Ok() : BadRequest();
         }
 
         [HttpGet]

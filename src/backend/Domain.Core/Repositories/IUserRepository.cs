@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Core.Models;
 
@@ -10,5 +11,6 @@ namespace Domain.Core.Repositories
         Task<User> GetByUsernameAndPasswordAsync(string username, string password);
 
         Task<User> AddAsync(User user);
+        Task UpdateAsync(string id, User user);
     }
 }

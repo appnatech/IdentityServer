@@ -23,7 +23,9 @@ namespace Domain.Core.Stores
         public Task<IEnumerable<ApiResource>> FindApiResourcesByNameAsync(IEnumerable<string> apiResourceNames)
         {
             if (apiResourceNames == null)
+            {
                 throw new ArgumentNullException(nameof(apiResourceNames));
+            }
 
             return _apiResourceRepository.GetByNamesAsync(apiResourceNames);
         }
