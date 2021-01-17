@@ -1,4 +1,4 @@
-namespace Service.Rest.v1.Requests
+namespace Service.Rest.V1.Requests
 {
     public class UpdateUserRequest
     {

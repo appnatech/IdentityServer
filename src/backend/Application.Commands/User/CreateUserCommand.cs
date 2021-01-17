@@ -13,8 +13,6 @@ namespace Application.Commands.User
     {
         public string Username { get; }
         public string Password { get; }
-
-        // claims
         public string Name { get; set; }
 
         public CreateUserCommand(string userName, string password)
@@ -47,8 +45,7 @@ namespace Application.Commands.User
                 {
                     new Claim(JwtClaimTypes.Name, request.Name),
                 }
-            })
-            .ConfigureAwait(false);
+            });
 
             return subjectId;
         }

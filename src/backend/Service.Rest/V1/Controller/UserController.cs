@@ -5,9 +5,9 @@ using Application.Queries.User;
 using Domain.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Service.Rest.v1.Requests;
+using Service.Rest.V1.Requests;
 
-namespace Service.Rest.v1.Controller
+namespace Service.Rest.V1.Controller
 {
     [Route("api/users")]
     [ApiController]
