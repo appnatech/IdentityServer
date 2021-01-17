@@ -1,13 +1,13 @@
 using System.Threading.Tasks;
 using Domain.Core.Repositories;
 using IdentityServer4.Models;
-using MongoDB.Driver;
-using Microsoft.Extensions.Options;
 using Infrastructure.Repository.Mongo.Config;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 
 namespace Infrastructure.Repository.Mongo
 {
-    public class ClientMongoRepository : IClientRepository
+    public class ClientMongoRepository : RepositoryBase, IClientRepository
     {
         private const string ApiScopeCollectionName = "Client";
         private readonly IMongoCollection<Client> _clients;

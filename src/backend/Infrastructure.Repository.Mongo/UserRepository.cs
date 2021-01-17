@@ -11,7 +11,7 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Repository.Mongo
 {
-    public class UserMongoRepository : IUserRepository
+    public class UserMongoRepository : RepositoryBase, IUserRepository
     {
         private const string IdentityResourceCollectionName = "Users";
         private readonly IMongoCollection<UserDocument> _users;

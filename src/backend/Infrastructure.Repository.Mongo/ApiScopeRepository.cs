@@ -9,7 +9,7 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Repository.Mongo
 {
-    public class ApiScopeMongoRepository : IApiScopeRepository
+    public class ApiScopeMongoRepository : RepositoryBase, IApiScopeRepository
     {
         private const string ApiScopeCollectionName = "ApiScope";
         private readonly IMongoCollection<ApiScope> _apiScopes;

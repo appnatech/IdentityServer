@@ -1,8 +1,6 @@
 using System;
-using System.Security.Claims;
 using Application.Commands;
 using Application.Queries;
-using Domain.Core.Models;
 using Domain.Core.Repositories;
 using Domain.Core.Services;
 using Domain.Core.Stores;
@@ -15,7 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MongoDB.Bson.Serialization;
 
 namespace Service.Rest
 {
@@ -77,27 +74,6 @@ namespace Service.Rest
             app
                 .UseSwagger()
                 .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
-
-            // --- Configure Classes to ignore Extra Elements (e.g. _Id) when deserializing ---
-            ConfigureMongoDriverToIgnoreExtraElements();
-        }
-
-        /// <summary>
-        /// Configure Classes to ignore Extra Elements (e.g. _Id) when deserializing
-        /// As we are encapsulating "Domain.Core" we cannot add something like "[BsonIgnore]"
-        /// </summary>
-        private static void ConfigureMongoDriverToIgnoreExtraElements()
-        {
-            BsonClassMap.RegisterClassMap<User>(cm =>
-            {
-                cm.AutoMap();
-                cm.SetIgnoreExtraElements(true);
-            });
-            BsonClassMap.RegisterClassMap<Claim>(cm =>
-            {
-                cm.AutoMap();
-                cm.SetIgnoreExtraElements(true);
-            });
         }
     }
 }
