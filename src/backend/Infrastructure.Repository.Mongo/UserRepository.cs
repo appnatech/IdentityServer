@@ -41,14 +41,21 @@ namespace Infrastructure.Repository.Mongo
 
         public Task UpdateAsync(string id, User user)
         {
-            //return _users.ReplaceOneAsync(u => u.SubjectId == id, user);
-
-            throw new System.NotImplementedException();
+            return _users.ReplaceOneAsync(u => u.SubjectId == id, new UserDocument()
+            {
+                SubjectId = user.SubjectId,
+                Username = user.Username,
+                Password = user.Password,
+                IsActive = user.IsActive,
+                Name = user.Claims.SingleOrDefault(s => s.Type == JwtClaimTypes.Name).Value
+            });
         }
 
         public async Task<User> GetBySubjectIdAsync(string subjectId)
         {
+
             IAsyncCursor<UserDocument> userDocumentCursor = await _users.FindAsync(w => w.SubjectId == subjectId);
+
             var userDocument = userDocumentCursor.SingleOrDefault();
             var user = new User()
             {

@@ -33,11 +33,12 @@ namespace Service.Rest.V1.Controller
             return Ok(userId);
         }
 
-        [HttpPut]
-        [ActionName(nameof(UpdateUserAsync))]
-        public async Task<ActionResult> UpdateUserAsync([FromBody] UpdateUserRequest request)
+        [HttpPatch]
+        [Route("{id}/changePassword")]
+        [ActionName(nameof(ChangeUserPasswordAsync))]
+        public async Task<ActionResult> ChangeUserPasswordAsync([FromRoute] string id, [FromBody] ChangeUserPasswordRequest request)
         {
-            bool isSuccess = await _mediator.Send(new UpdateUserCommand(request.SubjectId, request.Name, request.Password));
+            bool isSuccess = await _mediator.Send(new ChangeUserPasswordCommand(id, request.NewPassword));
 
             return isSuccess ? Ok() : BadRequest();
         }

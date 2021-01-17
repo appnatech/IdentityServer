@@ -1,26 +1,23 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Core.Repositories;
-using IdentityModel;
 using MediatR;
 
 namespace Application.Commands.User
 {
-    public class UpdateUserCommand : BaseCommand<bool>
+    public class ChangeUserPasswordCommand : BaseCommand<bool>
     {
         public string SubjectId { get; set; }
-        public string Password { get; }
-        public string Name { get; set; }
+        public string NewPassword { get; }
 
-        public UpdateUserCommand(string subjectId, string name, string password)
+        public ChangeUserPasswordCommand(string subjectId, string newPassword)
         {
             SubjectId = subjectId;
-            Name = name;
-            Password = password;
+            NewPassword = newPassword;
         }
     }
 
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, bool>
+    public class UpdateUserCommandHandler : IRequestHandler<ChangeUserPasswordCommand, bool>
     {
         private readonly IUserRepository _userRepository;
 
@@ -29,7 +26,7 @@ namespace Application.Commands.User
             _userRepository = userRepository;
         }
 
-        public async Task<bool> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(ChangeUserPasswordCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetBySubjectIdAsync(request.SubjectId);
             if (user is null)
@@ -38,8 +35,7 @@ namespace Application.Commands.User
                 return false;
             }
 
-            user.Password = request.Password;
-            user.UpdateClaim(JwtClaimTypes.Name, request.Name);
+            user.Password = request.NewPassword;
             await _userRepository.UpdateAsync(request.SubjectId, user);
 
             return true;
