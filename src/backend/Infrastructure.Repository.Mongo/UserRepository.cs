@@ -3,15 +3,15 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Domain.Core.Models;
 using Domain.Core.Repositories;
+using Global.Mongo.Models;
 using IdentityModel;
 using Infrastructure.Repository.Mongo.Config;
-using Infrastructure.Repository.Mongo.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace Infrastructure.Repository.Mongo
 {
-    public class UserMongoRepository : RepositoryBase, IUserRepository
+    public class UserMongoRepository : IUserRepository
     {
         private const string IdentityResourceCollectionName = "Users";
         private readonly IMongoCollection<UserDocument> _users;

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 namespace Infrastructure.Repository.Mongo
 {
-    public class IdentityResourceMongoRepository : RepositoryBase, IIdentityResourceRepository
+    public class IdentityResourceMongoRepository : IIdentityResourceRepository
     {
         private const string IdentityResourceCollectionName = "IdentityResource";
         private readonly IMongoCollection<IdentityResource> _identityResources;

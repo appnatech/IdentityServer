@@ -10,7 +10,7 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Repository.Mongo
 {
-    public class ApiResourceMongoRepository : RepositoryBase, IApiResourceRepository
+    public class ApiResourceMongoRepository : IApiResourceRepository
     {
         private const string ApiResourceCollectionName = "ApiResource";
         private readonly IMongoCollection<ApiResource> _apiResourses;

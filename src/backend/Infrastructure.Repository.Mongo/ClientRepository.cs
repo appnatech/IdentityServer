@@ -7,7 +7,7 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Repository.Mongo
 {
-    public class ClientMongoRepository : RepositoryBase, IClientRepository
+    public class ClientMongoRepository : IClientRepository
     {
         private const string ApiScopeCollectionName = "Client";
         private readonly IMongoCollection<Client> _clients;

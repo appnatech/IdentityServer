@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Commands.User;
+using Application.Queries.Models;
 using Application.Queries.User;
 using Domain.Core.Models;
 using MediatR;
@@ -47,7 +48,7 @@ namespace Service.Rest.V1.Controller
         [ActionName(nameof(GetUsersAsync))]
         public async Task<ActionResult> GetUsersAsync()
         {
-            IEnumerable<User> users = await _mediator.Send(new GetUsersQuery())
+            IEnumerable<UserViewModel> users = await _mediator.Send(new GetUsersQuery())
             .ConfigureAwait(false);
 
             return Ok(users);

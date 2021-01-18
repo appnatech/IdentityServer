@@ -1,12 +1,11 @@
 using System;
-using Infrastructure.Repository.Mongo.Models;
 using MongoDB.Bson.Serialization;
 
-namespace Infrastructure.Repository.Mongo
+namespace Global.Mongo.Models
 {
-    public class RepositoryBase
+    public class MongoDocumentsMap
     {
-        static RepositoryBase()
+        public static void Initialize()
         {
             BsonClassMap.RegisterClassMap<UserDocument>(cm =>
             {

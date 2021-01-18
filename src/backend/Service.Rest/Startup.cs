@@ -4,6 +4,7 @@ using Application.Queries;
 using Domain.Core.Repositories;
 using Domain.Core.Services;
 using Domain.Core.Stores;
+using Global.Mongo.Models;
 using Infrastructure.Repository.Mongo;
 using Infrastructure.Repository.Mongo.Config;
 using MediatR;
@@ -43,6 +44,10 @@ namespace Service.Rest
                 services.AddScoped<IApiResourceRepository, ApiResourceMongoRepository>();
                 services.AddScoped<IApiScopeRepository, ApiScopeMongoRepository>();
                 services.AddScoped<IIdentityResourceRepository, IdentityResourceMongoRepository>();
+                services.Configure<MongoDataBaseConfigurations>(Configuration.GetSection("MongoDataBaseConfigurations"));
+
+                MongoDocumentsMap.Initialize();
+
             }
             else
             {
@@ -56,7 +61,9 @@ namespace Service.Rest
 
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppnaTech Identity Server API", Version = "v1" }));
 
-            services.Configure<MongoDataBaseConfigurations>(Configuration.GetSection("MongoDataBaseConfigurations"));
+
+
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
