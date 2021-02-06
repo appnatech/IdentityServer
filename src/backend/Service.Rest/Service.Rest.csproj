@@ -7,8 +7,8 @@
 
    <ItemGroup>
      <ProjectReference Include="..\Application.Commands\Application.Commands.csproj" />
-     <ProjectReference Include="..\Application.Queries\Application.Queries.csproj" />
      <ProjectReference Include="..\Infrastructure.Repository.Mongo\Infrastructure.Repository.Mongo.csproj" />
+     <ProjectReference Include="..\Application.Queries\Application.Queries.Mongo.csproj" />
    </ItemGroup>
 
   <PropertyGroup>
