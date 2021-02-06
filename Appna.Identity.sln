@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{425B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Commands", "src\backend\Application.Commands\Application.Commands.csproj", "{2750B1BB-46BE-46E2-8D7B-95E77CC73790}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Queries.Mongo", "src\backend\Application.Queries\Application.Queries.Mongo.csproj", "{3EBAA092-F678-41A0-A9BD-486CC1E4933C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Queries.Mongo", "src\backend\Application.Queries.Mongo\Application.Queries.Mongo.csproj", "{3EBAA092-F678-41A0-A9BD-486CC1E4933C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Queries.Models", "src\backend\Application.Queries.Models\Application.Queries.Models.csproj", "{f0e52565-01b5-4199-bea5-117ea8f6e406}"
 EndProject
