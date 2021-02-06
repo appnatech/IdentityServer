@@ -1,31 +1,43 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
+using Application.Queries.Models;
+using Global.Mongo.Models;
 using Infrastructure.Repository.Mongo.Config;
 using MediatR;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 namespace Application.Queries.User
 {
-    public class GetUsersQuery : BaseQuery<IEnumerable<Domain.Core.Models.User>>
+    public class GetUsersQuery : BaseQuery<IEnumerable<UserViewModel>>
     {
     }
 
-    public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IEnumerable<Domain.Core.Models.User>>
+    public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IEnumerable<UserViewModel>>
     {
         private readonly IMongoDatabase database;
-        private IMongoCollection<Domain.Core.Models.User> _users => database.GetCollection<Domain.Core.Models.User>("Users");
+        private readonly IMongoCollection<UserDocument> _users;
 
         public GetUsersQueryHandler(IOptions<MongoDataBaseConfigurations> config)
         {
             var mongoClient = new MongoClient(config.Value.ConnectionString);
             database = mongoClient.GetDatabase(config.Value.DatabaseName);
+
+            _users = database.GetCollection<UserDocument>("Users");
         }
 
-        public async Task<IEnumerable<Domain.Core.Models.User>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<UserViewModel>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
         {
-            var users = await _users.FindAsync(user => true, null, cancellationToken);
-            return await users.ToListAsync(cancellationToken);
+            IAsyncCursor<UserDocument> userDocumentCursor = await _users.FindAsync(w => true, cancellationToken: cancellationToken);
+            var userDocuments = userDocumentCursor.ToList(cancellationToken: cancellationToken);
+
+            return userDocuments.Select(s => new UserViewModel()
+            {
+                UserName = s.Username,
+                Name = s.Name,
+                IsActive = s.IsActive
+            });
         }
     }
 }
