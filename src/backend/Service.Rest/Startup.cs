@@ -1,13 +1,3 @@
-using System;
-using Application.Commands;
-using Application.Queries;
-using Domain.Core.Repositories;
-using Domain.Core.Services;
-using Domain.Core.Stores;
-using Global.Mongo.Models;
-using Infrastructure.Repository.Mongo;
-using Infrastructure.Repository.Mongo.Config;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,51 +9,22 @@ namespace Service.Rest
 {
     public class Startup
     {
-        private IConfiguration Configuration { get; }
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddIdentityServer()
-                .AddProfileService<ProfileService>()
-                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
-                .AddClientStore<ClientStore>()
-                .AddResourceStore<ResourcesStore>()
-                .AddCorsPolicyService<CorsPolicyService>()
-                .AddDeveloperSigningCredential(persistKey: false);
-
-            if (string.Equals(Configuration["IdentityServerConfigurations:DataProvider"], "Mongo", StringComparison.OrdinalIgnoreCase))
-            {
-                services.AddScoped<IUserRepository, UserMongoRepository>();
-                services.AddScoped<IClientRepository, ClientMongoRepository>();
-                services.AddScoped<IApiResourceRepository, ApiResourceMongoRepository>();
-                services.AddScoped<IApiScopeRepository, ApiScopeMongoRepository>();
-                services.AddScoped<IIdentityResourceRepository, IdentityResourceMongoRepository>();
-                services.Configure<MongoDataBaseConfigurations>(Configuration.GetSection("MongoDataBaseConfigurations"));
-
-                MongoDocumentsMap.Initialize();
-
-            }
-            else
-            {
-                throw new Exception("declared dataType in config not supported");
-            }
 
             services.AddControllers();
-            services.AddMediatR(typeof(BaseCommand<>), typeof(BaseQuery<>));
+            //services.AddMediatR(typeof(BaseCommand<>), typeof(BaseQuery<>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LogBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppnaTech Identity Server API", Version = "v1" }));
-
-
-
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -75,7 +36,6 @@ namespace Service.Rest
             app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseIdentityServer();
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
             app

@@ -5,12 +5,6 @@
      <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
    </ItemGroup>
 
-   <ItemGroup>
-     <ProjectReference Include="..\Application.Commands\Application.Commands.csproj" />
-     <ProjectReference Include="..\Infrastructure.Repository.Mongo\Infrastructure.Repository.Mongo.csproj" />
-     <ProjectReference Include="..\Application.Queries\Application.Queries.Mongo.csproj" />
-   </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>netcoreapp5</TargetFramework>
   </PropertyGroup>
