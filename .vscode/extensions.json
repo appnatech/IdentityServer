@@ -1,7 +1,6 @@
 {
     "recommendations": [
         "formulahendry.dotnet",
-        "adrianwilczynski.user-secrets",
         "ms-dotnettools.csharp",
         "fernandoescolar.vscode-solution-explorer"
     ]
